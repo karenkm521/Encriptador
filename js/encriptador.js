@@ -2,7 +2,8 @@ const textoIngresado =document.querySelector(".IngresaTexto")
 const resultadoTexto= document.querySelector(".SalidaTexto")
 
 function botonEncriptar(){
-    const mensajeEncriptado= encriptar(textoIngresado.value)
+     mensaje=limpiar(textoIngresado.value)
+    const mensajeEncriptado= encriptar(mensaje)
     if (mensajeEncriptado==textoIngresado.value){
         alert("No es posible encriptar el mensaje")
         textoIngresado.value="";
@@ -12,6 +13,12 @@ function botonEncriptar(){
       resultadoTexto.value=mensajeEncriptado;
       textoIngresado.value="";
 }  
+    }
+
+function limpiar(stringAEncriptado){{
+        return stringAEncriptado.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+      } 
     }
     
 function encriptar(stringEncriptado){
